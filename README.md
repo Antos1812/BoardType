@@ -1,0 +1,1 @@
+# BoardType
