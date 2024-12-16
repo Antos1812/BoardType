@@ -5,6 +5,13 @@ body {
     margin: 0;
     padding: 0;
   }
+
+  #Title{
+    font-size: 50px;
+    margin-top: 40px;
+    display: absolute;
+    color: rgb(195, 195, 8);
+  }
   
   .container {
     display: flex;
