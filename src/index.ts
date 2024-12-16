@@ -41,24 +41,26 @@ function updateProgress() {
 function handleTyping(event: KeyboardEvent) {
   const inputField = document.getElementById("input-field") as HTMLInputElement;
 
+  // Pobierz aktualną wartość pola tekstowego
+  currentInput = inputField.value;
+
   const key = event.key;
 
-  if (key === "Backspace") {
-    currentInput = currentInput.slice(0, -1);
-  } else if (key.length === 1 && /^[a-zA-Z]$/.test(key)) {
-    currentInput += key;
-  } else if (key === " ") {
-    event.preventDefault();
+  if (key === " ") {
+    event.preventDefault(); // Zablokuj wpisywanie spacji
     if (currentInput === displayedWord) {
-      moveToNextWord(inputField);
+      moveToNextWord(inputField); // Przejdź do nowego słowa
     } else {
-      alert("Niepoprawne słowo! Spróbuj ponownie.");
+      console.log("Niepoprawne słowo! Spróbuj ponownie.");
     }
+    currentInput = ""; // Zresetuj aktualne wprowadzenie
+    inputField.value = ""; // Zresetuj pole tekstowe
   }
 
   updateProgress();
   displayWord();
 }
+
 
 window.onload = () => {
   displayedWord = getRandomWord();
