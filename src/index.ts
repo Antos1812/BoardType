@@ -1,3 +1,9 @@
+
+// Zrobić licznik poprawnie wpisanych słów
+// zrobic reset po zatwierdzeniu źle wpisanego słowa
+// zrobić zmiane czcionki w jakis opcjach
+// zrobić opcje do zmiany rodzaji "słów"
+
 const words: string[] = [
   "hello", "world", "typing", "monkey", "keyboard", "javascript", 
   "python", "developer", "computer", "internet", "typescript", 
@@ -6,11 +12,17 @@ const words: string[] = [
   "html", "css", "nodejs", "react", "angular", "database", "sql", "api"
 ];
 
+const wordsHard: string[] = [
+  "public", "point", "between", "however", "through", "though", "school",
+  "because", "consider", "during", "interest", "early", "increase", "current"
+];
+
+let currentType: string[] = words;
 let displayedWord: string = "";
 let currentInput: string = "";
 
 function getRandomWord(): string {
-  return words[Math.floor(Math.random() * words.length)];
+  return currentType[Math.floor(Math.random() * currentType.length)];
 }
 
 function displayWord() {
@@ -39,33 +51,41 @@ function updateProgress() {
 }
 
 function handleTyping(event: KeyboardEvent) {
-  const inputField = document.getElementById("input-field") as HTMLInputElement;
 
-  // Pobierz aktualną wartość pola tekstowego
+  const inputField = document.getElementById("input-field") as HTMLInputElement;
   currentInput = inputField.value;
 
   const key = event.key;
 
   if (key === " ") {
-    event.preventDefault(); // Zablokuj wpisywanie spacji
+    event.preventDefault();
     if (currentInput === displayedWord) {
-      moveToNextWord(inputField); // Przejdź do nowego słowa
+      moveToNextWord(inputField);
     } else {
       console.log("Niepoprawne słowo! Spróbuj ponownie.");
     }
-    currentInput = ""; // Zresetuj aktualne wprowadzenie
-    inputField.value = ""; // Zresetuj pole tekstowe
-  }
-
+    currentInput = "";
+    inputField.value = ""; 
+  } 
   updateProgress();
   displayWord();
 }
 
-
+function changeType(set: "Programming" | "Mid"){
+  currentType = set === "Programming" ? words : wordsHard;
+  displayedWord = getRandomWord();
+  displayWord();
+}
 window.onload = () => {
   displayedWord = getRandomWord();
   displayWord();
 
   const inputField = document.getElementById("input-field") as HTMLInputElement;
   inputField.addEventListener("keydown", handleTyping);
+  
+  const ProgrammingButton = document.getElementById("Programm-Button") as HTMLElement;
+  const MidButton = document.getElementById("Mid-Button") as HTMLElement;
+
+  ProgrammingButton.addEventListener("click", ()=> changeType("Programming"));
+  MidButton.addEventListener("click", ()=> changeType("Mid"));
 };
