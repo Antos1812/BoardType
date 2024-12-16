@@ -1,5 +1,5 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Mononoki', monospace;
     background-color: #3d3737;
     text-align: center;
     margin: 0;
@@ -11,6 +11,7 @@ body {
     margin-top: 40px;
     display: absolute;
     color: rgb(195, 195, 8);
+    cursor: default;
   }
   
   .container {
@@ -27,7 +28,11 @@ body {
     text-align: center;
     margin-top: 20px;
     width: 300px;
-    max-width: 100%;  /* Ensure responsiveness */
+    max-width: 100%;
+    border-radius: 14px;
+    border-color: white;
+    box-shadow: 5px 20px 32px rgb(21, 20, 20);
+    cursor:auto;
   }
   
   #current-words {
@@ -35,7 +40,7 @@ body {
     font-size: 32px;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 20px; /* To provide space between words and input field */
+    margin-bottom: 20px;
   }
   
   span {
