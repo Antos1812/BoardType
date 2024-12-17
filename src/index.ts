@@ -89,3 +89,10 @@ window.onload = () => {
   ProgrammingButton.addEventListener("click", ()=> changeType("Programming"));
   MidButton.addEventListener("click", ()=> changeType("Mid"));
 };
+
+document.getElementById('ButtonTheme0')?.addEventListener('click', () => {
+  document.body.style.backgroundColor = "snow";
+});
+document.getElementById('ButtonTheme1')?.addEventListener('click', () => {
+  document.body.style.backgroundColor = "#3d3737";
+});
