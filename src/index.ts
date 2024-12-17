@@ -14,7 +14,9 @@ const words: string[] = [
 
 const wordsHard: string[] = [
   "public", "point", "between", "however", "through", "though", "school",
-  "because", "consider", "during", "interest", "early", "increase", "current"
+  "because", "consider", "during", "interest", "early", "increase", "current",
+  "everything", "I've", "I'd", "I'll", "strangest", "letting", "weather",
+  "tomorrow", "laundry", "drying", "dying"
 ];
 
 let currentType: string[] = words;
